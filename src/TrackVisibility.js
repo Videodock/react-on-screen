@@ -163,6 +163,10 @@ export default class TrackVisibility extends Component {
   }
   
   isComponentVisible = () => {
+    if (!this.nodeRef || !this.nodeRef.getBoundingClientRect) {
+      return;
+    }
+
     const html = document.documentElement;
     const { once } = this.props;
     const boundingClientRect = this.nodeRef.getBoundingClientRect();
